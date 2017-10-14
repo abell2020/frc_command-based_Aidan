@@ -1,8 +1,11 @@
 package org.usfirst.frc.team2485.robot;
 
+import org.usfirst.frc.team2485.robot.commands.SetShooter;
+import org.usfirst.frc.team2485.robot.commands.tester;
 
-
-
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,4 +39,33 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	public static Joystick driver;
+	public static Joystick operator;
+	
+	public static final int XBOX_RIGHT_X = 4;
+	public static final int XBOX_LEFT_Y = 1;
+	 public static final int XBOX_BTN_A = 1;
+	  
+	    public static final int XBOX_BTN_B = 2;
+	  
+	    public static final int XBOX_BTN_X = 3;
+	  
+	    public static final int XBOX_BTN_Y = 4;
+	    
+	    public static final int XBOX_LBUMPER = 5;
+	    
+	    public static final int XBOX_RBUMPER = 6;
+	
+	private void init() {
+		driver = new Joystick(0);
+		operator = new Joystick(1);
+		
+		Button driverBtnA = new JoystickButton(driver, XBOX_BTN_A);
+		driverBtnA.whenPressed(new SetShooter());
+		
+		new JoystickButton(driver, XBOX_BTN_B).whenPressed(new tester());
+	
+		// TODO Auto-generated method stub
+
+	}
 }
